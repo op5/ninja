@@ -34,11 +34,16 @@ Requires: monitor-ninja-monitoring
 BuildRequires: python
 BuildRequires: doxygen
 BuildRequires: graphviz
-Requires: php >= 5.3
-Requires: php-ldap
-Requires: php-pecl-apc
-BuildRequires: php >= 5.3
 BuildRequires: shadow-utils
+
+#Requires: php >= 5.3
+#Requires: php-ldap
+#Requires: php-pecl-apc
+#BuildRequires: php >= 5.3
+
+Requires: monitor-php7
+BuildRequires: monitor-php7
+
 %if 0%{?rhel} >= 6 || 0%{?rhel_version} >=600 || 0%{?centos_version} >=600
 Requires: php-process
 Requires: php-mbstring
