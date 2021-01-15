@@ -10,7 +10,7 @@ PHPUNIT := phpunit --debug --bootstrap test/bootstrap.php
 all: generate-php
 
 generate-php:
-	php build.php
+	/opt/rh/rh-php72/root/usr/bin/php build.php
 
 # All php "unit" tests that affects/needs a currently installed monitor should
 # be tagged with @nonlocal, so that we can avoid them when running them
