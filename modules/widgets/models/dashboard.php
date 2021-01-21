@@ -151,7 +151,7 @@ class Dashboard_Model extends BaseDashboard_Model
 	 *
 	 * @param $permissions array => ['table1' => ['key1', 'key2', ...], 'table2' => ['key1', 'key2', ...]]
 	 */
-	public function set_read_perm(array $permissions = array()) {
+	public function set_read_perm($permissions) {
 		$quarks = array();
 		foreach($permissions as $table => $keys) {
 			foreach($keys as $key) {
