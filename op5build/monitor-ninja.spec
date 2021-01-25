@@ -27,7 +27,7 @@ Requires: op5-monitor-supported-webserver
 Requires: monitor-livestatus
 Requires: op5-lmd
 Requires: monitor-backup
-Requires: op5-bootstrap
+# Requires: op5-bootstrap
 # Merlin creates our database
 Requires: merlin
 Requires: monitor-ninja-monitoring
