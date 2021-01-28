@@ -176,7 +176,7 @@ if (!empty($base_href)) {
 				echo $js_strings;
 			}
 			if (!empty($inline_js)) {
-				echo '$(document).ready(function() {';
+				echo '$(function() {';
 				echo $inline_js;
 				echo "});";
 			}?>
