@@ -38,10 +38,11 @@ post:
     gem install webdrivers
     gem install selenium-webdriver
     gem install xpath
+    gem install concurrent-ruby
 
     ulimit -c unlimited
     mkdir -p /mnt/logs
     echo "core ulimit: \$(ulimit -c)"
     export CUKE_SCREEN_DIR=/mnt/logs/screenshots
-    cucumber -t "not @unreliable" --strict --format html --out /mnt/logs/cucumber.html --format pretty
+    cucumber --fail-fast -t "not @unreliable" --strict --format html --out /mnt/logs/cucumber.html --format pretty
 
