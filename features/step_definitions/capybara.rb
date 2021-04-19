@@ -1,3 +1,5 @@
+require_relative '../support/wait_for_ajax'
+
 When /^Debug$/ do
   puts "URL: #{current_url}"
   puts "Path: #{current_path}"
@@ -77,34 +79,42 @@ When /^I click the delete icon for comment (\d+)$/ do |comment_id|
 end
 
 When /^I click link "([^"]*)"$/ do |link|
+  WaitForAjax.wait_for_ajax
   click_link link
 end
 
 When /^I click button "([^"]*)"$/ do |button|
+  WaitForAjax.wait_for_ajax
   click_button(button)
 end
 
 When /^I click "([^"]*)"$/ do |id|
+  WaitForAjax.wait_for_ajax
   click_on id
 end
 
 When /^I check "([^"]*)"$/ do |id|
+  WaitForAjax.wait_for_ajax
   check(id)
 end
 
 When /^I uncheck "([^"]*)"$/ do |id|
+  WaitForAjax.wait_for_ajax  
   uncheck(id)
 end
 
 When /^I select "([^"]*)"$/ do |opt|
+  WaitForAjax.wait_for_ajax
   select(opt)
 end
 
 When /^I choose "([^"]*)"$/ do |opt|
+  WaitForAjax.wait_for_ajax
   choose(opt)
 end
 
 When /^I deselect options in "([^"]*)"$/ do |sel|
+  WaitForAjax.wait_for_ajax
   find(:xpath, XPath::HTML.select(sel)).all('option').each do |opt|
     if opt.selected? then
       opt.unselect_option
@@ -114,7 +124,9 @@ end
 
 
 When /^I select "(.*)" from "([^"]*)"$/ do |opt, sel|
+  WaitForAjax.wait_for_ajax
   select(opt, :from => sel)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I click xpath "([^"]*)"$/ do |xp|

@@ -66,7 +66,6 @@ Requires: openldap-servers
 Requires: monitor-pnp
 
 Requires: gcc
-Requires: chromedriver
 Requires: python3
 Requires: ruby
 Requires: ruby-devel

@@ -38,7 +38,7 @@ post:
     gem install webdrivers
     gem install selenium-webdriver
     gem install xpath
-    gem install concurrent-ruby
+    gem install apparition
 
     ulimit -c unlimited
     mkdir -p /mnt/logs

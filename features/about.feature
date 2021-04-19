@@ -2,7 +2,8 @@
 Feature: Menu About
 
 	Background:
-		Given I am logged in testing the main page
+		Given I am logged in
+		And I am on the main page
 
 	Scenario: See that the menu option displays properly on hover branding
 		When I hover the branding

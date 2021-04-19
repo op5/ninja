@@ -6,6 +6,7 @@ require 'selenium-webdriver'
 require 'webdrivers'
 require 'syslog'
 require 'fileutils'
+require 'capybara/apparition'
 
 if ENV['TEST_ENV_NUMBER']
   class Capybara::Server
@@ -16,23 +17,21 @@ if ENV['TEST_ENV_NUMBER']
   end
 end
 
-
-Capybara.register_driver :selenium_chrome_headless do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(
-    args: %w[
-      headless 
-      no-sandbox 
-      disable-gpu 
-      --ignore-certificate-errors 
-      --blink-settings=imagesEnabled=false 
-      --window-size=1920,1080
-    ]
-  )
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+Capybara.register_driver :apparition do |app|
+  Capybara::Apparition::Driver.new(
+    app,
+    js_errors: false,
+    browser_options: {
+    'no-sandbox' => true,
+    'disable-web-security' => true,
+    'disable-features' => 'VizDisplayCompositor',
+    'headless' => true,
+    'ignore-certificate-errors' => true, 
+    })
 end
 
-Capybara.default_driver = :selenium_chrome_headless
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.default_driver = :apparition
+Capybara.javascript_driver = :apparition
 
 Capybara.run_server = false
 Capybara.default_max_wait_time = 30

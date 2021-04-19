@@ -1,5 +1,3 @@
-require_relative '../support/inspect_requests'
-
 When /^I have these mocked (.*)$/ do |type, table|
   @mock.mock(type, table.hashes)
   page.driver.headers = {'X-op5-mock' => @mock.file}
@@ -44,30 +42,9 @@ When /^I am logged in$/ do
       "args" => {}
   })
 
-end
+  page.driver.headers = {'X-op5-mock' => @mock.file}
 
-When /^I am logged in testing the main page$/ do
-	@mock.mock('authmodules', [{
-		"modulename" => "Default",
-		"properties" => {
-			 "driver" => "Default"
-		}
-	}])
-  
-	@mock.mock_class("op5auth", {
-		"mock_class" => "MockAuth",
-		"args" => {}
-	})
-  
-	@mock.mock_class("op5MayI", {
-		"mock_class" => "MockMayI",
-		"args" => {}
-	})
-  
-	InspectRequests::inspect_requests(inject_headers: { 'X-op5-mock' => @mock.file }) do
-		visit NavigationHelpers.path_to('main page')
-	end
-  end
+end
 
 When /^I am logged in as administrator$/ do
 

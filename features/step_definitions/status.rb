@@ -1,3 +1,5 @@
+require_relative '../support/wait_for_ajax'
+
 When /^I enter the time in (\d) minutes into "(.+)"$/ do |minutes, selector|
 	require('date')
 	fill_in(selector, :with => (Time.now + minutes.to_i * 60).strftime('%F %T'))
@@ -140,12 +142,14 @@ Then /^I should see an icon with title "([^\"]+)"$/ do |title|
 end
 
 When /I select "(.*)" from the multiselect "(.*)"$/ do |option, selector|
+  WaitForAjax.wait_for_ajax
   tmp_sel = find_field(find_field(selector)[:id].sub('[', '_tmp['))
   tmp_sel.select(option)
   page.execute_script("$('##{tmp_sel[:id].gsub('[', '\\\\\[').gsub(']', '\\\\\]')}').trigger('change');")
 end
 
 When /I deselect "(.*)" from the multiselect "(.*)"$/ do |option, selector|
+  WaitForAjax.wait_for_ajax
   tmp_sel = find_field(selector)
   tmp_sel.select(option)
   page.execute_script("$('##{tmp_sel[:id].gsub('[', '\\\\\[').gsub(']', '\\\\\]')}').trigger('change');")
