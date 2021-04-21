@@ -68,6 +68,7 @@ Feature: Availability reports
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
 		And I select "Servicegroups" from "Report type"
+		And I wait for 2 seconds
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
 		When I click "Show report"
