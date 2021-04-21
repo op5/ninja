@@ -67,8 +67,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Servicegroups" from "Report type"
-		And I wait for 2 seconds
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
 		When I click "Show report"
@@ -81,7 +80,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
 		When I check "Include pie charts"
@@ -108,7 +107,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		And I select "win-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
@@ -136,7 +135,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
 		When I check "Include pie charts"
@@ -157,7 +156,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server1;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -182,7 +181,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server2;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -274,7 +273,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
 		When I check "Use alias"
@@ -298,7 +297,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
@@ -387,7 +386,7 @@ Feature: Availability reports
 		When I click "Create Availability Report"
 		Then I should see "Up"
 		And I shouldn't see "Ok"
-		When I select "Servicegroups" from "Report type"
+		When I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then I should see "Ok"
 		And I shouldn't see "Up"
@@ -586,7 +585,7 @@ Feature: Availability reports
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		When I click "Create Availability Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
 		When I select "Custom" from "Reporting period"

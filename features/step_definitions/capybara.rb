@@ -129,6 +129,13 @@ When /^I select "(.*)" from "([^"]*)"$/ do |opt, sel|
   WaitForAjax.wait_for_ajax
 end
 
+When /^I select "(.*)" from the report_type dropdown$/ do |opt|
+  WaitForAjax.wait_for_ajax
+  select(opt, :from => "report_type")
+  page.execute_script("$('#report_type').trigger('change')")
+  WaitForAjax.wait_for_ajax
+end
+
 When /^I click xpath "([^"]*)"$/ do |xp|
   find(:xpath, xp).click
 end

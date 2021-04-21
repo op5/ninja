@@ -19,5 +19,7 @@ Then(/^I check for cookie bar$/) do
 end
 
 And(/^I click the got it button$/) do
+  WaitForAjax.wait_for_ajax
   page.find("a", :text => "Got it").click
+  WaitForAjax.wait_for_ajax
 end
