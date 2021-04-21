@@ -30,6 +30,7 @@ if (!empty($base_href)) {
 		$v = new View('css_header', array('css' => isset($css)?$css:array()));
 		$v->render(true);
 	?>
+	<script src="<?php echo ninja::add_path('../src/js/00_jquery.js'); ?>"></script>
 	<script>
 		if(!window.frameElement) {
 			window.addEventListener("load", function(){
