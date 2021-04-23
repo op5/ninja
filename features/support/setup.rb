@@ -25,7 +25,7 @@ Capybara.register_driver :apparition do |app|
     'no-sandbox' => true,
     'disable-web-security' => true,
     'disable-features' => 'VizDisplayCompositor',
-    'headless' => true,
+    'headless' => false,
     'ignore-certificate-errors' => true,
     'width' => 1920,
     'height' => 1080,
