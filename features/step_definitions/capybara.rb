@@ -129,9 +129,9 @@ When /^I select "(.*)" from "([^"]*)"$/ do |opt, sel|
   WaitForAjax.wait_for_ajax
 end
 
-When /^I select "(.*)" from the report_type dropdown "([^"]*)"$/ do |opt, sel|
+When /^I select "(.*)" from the report_type dropdown$/ do |opt|
   WaitForAjax.wait_for_ajax
-  select(opt, :from => sel)
+  select(opt, :from => "Report type")
   page.evaluate_script(document.getElementById("report_type").dispatchEvent(new Event("change")))
   WaitForAjax.wait_for_ajax
 end

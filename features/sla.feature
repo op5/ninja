@@ -72,7 +72,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
 		When I enter "9" into "Jan"
@@ -99,7 +99,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
 		When I enter "9" into "Jan"
@@ -120,7 +120,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		And I select "win-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
@@ -146,7 +146,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
 		When I enter "9.1" into "Jan"
@@ -165,7 +165,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server1;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -192,7 +192,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server2;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -298,7 +298,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
 		When I enter "100" into "Jan"
@@ -325,7 +325,7 @@ Feature: SLA reports
 		And I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		When I click "Create SLA Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"

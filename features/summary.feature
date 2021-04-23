@@ -99,7 +99,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
 		And I click "Show report"
@@ -113,7 +113,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "win-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "win-server1"
 		When I select "Forever" from "Reporting period"
@@ -172,7 +172,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "win-server1" from the multiselect "objects_tmp"
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "win-server1"
@@ -232,7 +232,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "win-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "win-server1;PING"
 		When I select "Forever" from "Reporting period"
@@ -291,7 +291,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "win-server1;PING" from the multiselect "objects_tmp"
 		And I select "win-server1;Swap Usage" from the multiselect "objects_tmp"
 		Then "objects" should have option "win-server1;PING"
@@ -356,7 +356,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;System Load" from the multiselect "objects_tmp"
 		And I select "win-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;System Load"
@@ -598,7 +598,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
 		When I select "Forever" from "Reporting period"
@@ -656,7 +656,7 @@ Feature: Summary reports
 		And I hover over the "Summary" menu
 		When I click "Create Summary Report"
 		And I choose "Custom"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"

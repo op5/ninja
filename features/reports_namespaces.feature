@@ -34,7 +34,7 @@ Feature: Report namespace are respected
 		When I hover over the "Report" menu
 		And I hover over the "Availability" menu
 		And I click "Create Availability Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "Falco Lombardi" from the multiselect "objects_tmp"
 		And I click "Show report"
 		When I click "As PDF"
@@ -51,7 +51,7 @@ Feature: Report namespace are respected
 		When I hover over the "Report" menu
 		And I hover over the "SLA" menu
 		And I click "Create SLA Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "Fox McCloud" from the multiselect "objects_tmp"
 		And I enter "99" into "Jan"
 		And I click "Show report"

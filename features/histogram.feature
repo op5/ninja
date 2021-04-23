@@ -67,7 +67,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
 		When I click "Show report"
@@ -80,7 +80,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
 		When I select "Hard states" from "State types"
@@ -100,7 +100,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Hosts" from "Report type"
+		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		And I select "win-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
@@ -118,7 +118,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
 		When I click "Show report"
@@ -133,7 +133,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server1;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -154,7 +154,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Services" from "Report type"
+		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server2;System Load" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -219,7 +219,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
 		When I click "Show report"
@@ -233,7 +233,7 @@ Feature: Histogram reports
 		And I hover over the "Report" menu
 		And I hover over the "Histogram" menu
 		When I click "Create Histogram Report"
-		And I select "Servicegroups" from "Report type"
+		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
