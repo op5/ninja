@@ -162,11 +162,11 @@ When /^I note the value of "(.*)"$/ do |field|
 end
 
 Then /^"(.*?)" should be shown as the value of "(.*?)"$/ do |key, remembered_value|
-	ext_info_table_lookup(key).should eq @remembered[remembered_value.to_sym]
+	expect(ext_info_table_lookup(key)).to eq @remembered[remembered_value.to_sym]
 end
 
 Then /^"(.*?)" should be shown as "(.*?)"$/ do |key, value|
-	ext_info_table_lookup(key).should include value
+	expect(ext_info_table_lookup(key)).to include value
 end
 
 When /^I hover over the "(.*)" menu$/ do |element|
@@ -216,11 +216,11 @@ Then /^I shouldn't see "([^"]*)"$/ do |string|
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
-  /#{regex}/.should match page.document.text
+  expect(/#{regex}/).to match page.document.text
 end
 
 Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
-  /#{regex}/.should_not match page.document.text
+  expect(/#{regex}/).to_not match page.document.text
 end
 
 Then /^I should see (?:([\d]+) )?link "([^"]*)"$/ do |n, string|
@@ -248,19 +248,19 @@ Then /^I shouldn't see css "([^"]*)"$/ do |selector|
 end
 
 Then /^Link "([^"]*)" should contain "(.*)"$/ do |linkel, value|
-  find_link(linkel).text.strip.should =~ /#{value}/
+  expect(find_link(linkel).text.strip).to =~ /#{value}/
 end
 
 Then /^"([^"]*)" should contain "(.*)"$/ do |element, value|
-  find_field(element % @params).value.strip.should == value
+  expect(find_field(element % @params).value.strip).to == value
 end
 
 Then /^css "([^"]*)" should contain "(.*)"$/ do |element, value|
-  find(element).value.strip.should == value
+  expect(find(element).value.strip).to == value
 end
 
 Then /^"([^"]*)" shouldn't contain "(.*)"$/ do |element, value|
-  find_field(element).value.strip.should_not == value
+  expect(find_field(element).value.strip).to_not == value
 end
 
 Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|
@@ -304,7 +304,7 @@ Then /^"([^"]*)" should be disabled$/ do |sel|
 end
 
 Then /^the response code should be "(\d+)"$/ do |status|
-  page.status_code.should == status.to_i
+  expect(page.status_code).to == status.to_i
 end
 
 # WARNING: should be used with the row selector in the hacks section below, such as

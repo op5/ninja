@@ -13,7 +13,7 @@ Then /^all helptexts should be defined$/ do
     expect(page).to have_css(".lib-popover-tip", :visible => true)
     # "This helptext (%s) is not translated yet" is only printed by convention, but it appears we follow it
     expect(page).to have_no_content "This helptext"
-    find(".lib-popover-tip", :visible => true).text.length.should_not be 0
+    expect(find(".lib-popover-tip", :visible => true).text.length).to_not be 0
     elem.trigger(:mouseleave)
     expect(page).to have_selector('.lib-popover-tip', visible: false)
   }
@@ -175,7 +175,7 @@ Then /^I should see (a|an) (error|info|success|warning) notification$/ do |ignor
 end
 
 And /^the notification should contain "([^\"]*)"$/ do |notification_text|
-  page.find('div.notify-notification').should have_content(notification_text)
+  expect(page.find('div.notify-notification')).to have_content(notification_text)
 end
 
 Then /^I should see a notification containing the text "([^\"]*)"$/ do |notification_text|
@@ -205,9 +205,9 @@ Then /^I should see this status:$/ do |table|
     title = row.shift
     all(:xpath, "//div[@id='filter_result']/table/tbody/tr/td[count(preceding-sibling::td) = count(../../../thead[position()=last()]/tr/th[contains(.,'" + title + "')]/preceding-sibling::th)]").each do |col|
       expected = row.shift
-      col.should have_content expected
+      expect(col).to have_content expected
     end
-    row.length.should be == 0
+    expect(row.length).to be == 0
   end
 end
 

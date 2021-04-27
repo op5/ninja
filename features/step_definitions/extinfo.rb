@@ -21,51 +21,63 @@ Then /^the operating status toggle "([^\"]+)" should be inactive$/ do |toggle|
 end
 
 Then /^the timestamp "([^\"]+)" should show the datetime "([^\"]+)"$/ do |text, datetime|
-  toggle = page
+  toggle = expect(
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-raw')
-    .text.should eq(datetime)
+    .text
+  ).to eq(datetime)
 end
 
 # Don't cry over this step definition, it's there to use the same timezone as
 # the one configured in PHP's ini.
 Then /^the timestamp "([^\"]+)" should show the datetime for "(\d+)"$/ do |text, timestamp|
-  toggle = page
+  toggle = expect( 
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-raw')
-    .text.should eq(`php -r '$tz = new DateTimeZone(date_default_timezone_get()); $dt = new DateTime("now", $tz); $dt->setTimestamp(#{timestamp}); echo $dt->format("Y-m-d H:i:s");'`.strip)
+    .text
+  ).to eq(`php -r '$tz = new DateTimeZone(date_default_timezone_get()); $dt = new DateTime("now", $tz); $dt->setTimestamp(#{timestamp}); echo $dt->format("Y-m-d H:i:s");'`.strip)
 end
 
 Then /^the timestamp "([^\"]+)" should show the relative time "([^\"]+)"$/ do |text, reltime|
-  toggle = page
+  toggle = expect(
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-value')
-    .text.should eq(reltime)
+    .text
+  ).to eq(reltime)
 end
 
 Then /^the object details field "([^\"]+)" should show "([^\"]+)"$/ do |text, value|
-  toggle = page
+  toggle = expect(
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-value')
-    .text.should eq(value)
+    .text
+  ).to eq(value)
 end
 
 Then /^the object details field "([^\"]+)" raw should show "([^\"]+)"$/ do |text, value|
-  toggle = page
+  toggle = expect(
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-raw')
-    .text.should eq(value)
+    .text
+  ).to eq(value)
 end
 
 Then /^the object details field "([^\"]+)" should match "([^\"]+)"$/ do |text, value|
-  toggle = page
+  toggle = expect(
+    page
     .find('div.information-cell-header', text: text)
     .find(:xpath, "..")
     .find('div.information-cell-value')
-    .text.should match(value)
+    .text
+  ).to match(value)
 end
