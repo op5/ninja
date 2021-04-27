@@ -45,7 +45,7 @@ end
 Then /^I should see the configured (.*)?$/ do |obj_type|
   obj_type.chomp!('s')
   @configuration.objects[obj_type].all? {
-    |obj| page.should have_content(obj.name)
+    |obj| expect(page).to have_content(obj.name)
   }
 end
 

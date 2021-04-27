@@ -176,7 +176,7 @@ end
 Then /^I should see these menu items:$/ do |table|
   rows = table.raw
   rows.each do |row|
-    page.should have_link(row[0])
+    expect(page).to have_link(row[0])
   end
 end
 
@@ -188,7 +188,7 @@ Then /^I should see the "(.*)" table$/ do |tablename|
 end
 
 Then /^I should see (?:([\d]+) )?"([^"]*)"$/ do |n, string|
-  page.should have_content(string, :count => n)
+  expect(page).to have_content(string, :count => n)
 end
 
 Then /^I should see "([^"]*)", compensating for DST$/ do |string|
@@ -208,11 +208,11 @@ Then /^I should see "([^"]*)", compensating for DST$/ do |string|
     days = days - 1
     string = days.to_s + "d 23h"
   end
-  page.should have_content(string)
+  expect(page).to have_content(string)
 end
 
 Then /^I shouldn't see "([^"]*)"$/ do |string|
-  page.should_not have_content(string)
+  expect(page).not_to have_content(string)
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
@@ -224,27 +224,27 @@ Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
 end
 
 Then /^I should see (?:([\d]+) )?link "([^"]*)"$/ do |n, string|
-  page.should have_link(string, :count => n)
+  expect(page).to have_link(string, :count => n)
 end
 
 Then /^I should see button "([^"]*)"$/ do |selector|
-  page.should have_button(selector)
+  expect(page).to have_button(selector)
 end
 
 Then /^I shouldn't see button "([^"]*)"$/ do |selector|
-	page.should have_no_button(selector)
+	expect(page).to have_no_button(selector)
 end
 
 Then /^I should see (?:([\d]+) )?xpath "([^"]*)"$/ do |n, selector|
-  page.should have_selector(:xpath, selector, :count => n)
+  expect(page).to have_selector(:xpath, selector, :count => n)
 end
 
 Then /^I should see (?:([\d]+) )?css "([^"]*)"$/ do |n, selector|
-  page.should have_css(selector, :count => n)
+  expect(page).to have_css(selector, :count => n)
 end
 
 Then /^I shouldn't see css "([^"]*)"$/ do |selector|
-  page.should_not have_css(selector)
+  expect(page).not_to have_css(selector)
 end
 
 Then /^Link "([^"]*)" should contain "(.*)"$/ do |linkel, value|
@@ -272,35 +272,35 @@ Then /^"([^"]*)" shouldn't contain regex "(.*)"$/ do |element, value|
 end
 
 Then /^"([^"]*)" should be checked$/ do |id|
-  page.should have_checked_field(id)
+  expect(page).to have_checked_field(id)
 end
 
 Then /^"([^"]*)" should be unchecked$/ do |id|
-  page.should have_unchecked_field(id)
+  expect(page).to have_unchecked_field(id)
 end
 
 Then /^"([^"]*)" should be selected from "([^"]*)"$/ do |opt, sel|
-  page.should have_select(sel, :selected => opt)
+  expect(page).to have_select(sel, :selected => opt)
 end
 
 Then /^"([^"]*)" shouldn't be selected from "([^"]*)"$/ do |opt, sel|
-  page.should have_no_select(sel, :selected => opt)
+  expect(page).to have_no_select(sel, :selected => opt)
 end
 
 Then /^"([^"]*)" should have option "(.*)"$/ do |sel, opt|
-  page.should have_select(sel, :with_options => [opt])
+  expect(page).to have_select(sel, :with_options => [opt])
 end
 
 Then /^"([^"]*)" shouldn't have option "(.*)"$/ do |sel, opt|
-  page.should_not have_select(sel, :with_options => [opt])
+  expect(page).not_to have_select(sel, :with_options => [opt])
 end
 
 Then /^"([^"]*)" should be enabled$/ do |sel|
-  page.should have_field(sel, :disabled => false)
+  expect(page).to have_field(sel, :disabled => false)
 end
 
 Then /^"([^"]*)" should be disabled$/ do |sel|
-  page.should have_field(sel, :disabled => true)
+  expect(page).to have_field(sel, :disabled => true)
 end
 
 Then /^the response code should be "(\d+)"$/ do |status|
@@ -310,11 +310,11 @@ end
 # WARNING: should be used with the row selector in the hacks section below, such as
 #   Then the "flubb" column should be "boing" on the row where "moggie" is "yes"
 Then /^the "(.*?)" column should be "([^"]*?)"$/ do |header, value|
-  should have_xpath("./td[contains(.,'" + value + "') and count(preceding-sibling::td) = count(../../../thead[position()=last()]/tr/th[contains(.,'" + header + "')]/preceding-sibling::th)]")
+  is_expected.to have_xpath("./td[contains(.,'" + value + "') and count(preceding-sibling::td) = count(../../../thead[position()=last()]/tr/th[contains(.,'" + header + "')]/preceding-sibling::th)]")
 end
 
 Then /^there should be a ([^ ]+) shield$/ do |color|
-  should have_xpath("./td/span[@title='#{color}']")
+  is_expected.to have_xpath("./td/span[@title='#{color}']")
 end
 
 #

@@ -10,7 +10,7 @@
 Then /^the hidden required field "([^\"]+)" should not be required$/ do |field_name|
   before = Capybara.ignore_hidden_elements;
   Capybara.ignore_hidden_elements = false;
-  page.should have_selector(:css, "[name='#{field_name}'][data-hidden-required='required']")
-  page.should have_no_selector(:css, "[name='#{field_name}'][required]")
+  expect(page).to have_selector(:css, "[name='#{field_name}'][data-hidden-required='required']")
+  expect(page).to have_no_selector(:css, "[name='#{field_name}'][required]")
   Capybara.ignore_hidden_elements = before;
 end

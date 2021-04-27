@@ -123,7 +123,7 @@ Then /^I should see the mocked (.*)$/ do | type |
       expected_content = obj['name']
     end
 
-    page.should have_content(expected_content)
+    expect(page).to have_content(expected_content)
   }
 end
 

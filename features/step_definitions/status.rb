@@ -10,12 +10,12 @@ Then /^all helptexts should be defined$/ do
   all(:css, '*[data-popover]', :visible => true).each { | elem |
     elem.trigger(:mouseover)
     sleep(1)
-    page.should have_css(".lib-popover-tip", :visible => true)
+    expect(page).to have_css(".lib-popover-tip", :visible => true)
     # "This helptext (%s) is not translated yet" is only printed by convention, but it appears we follow it
-    page.should have_no_content "This helptext"
+    expect(page).to have_no_content "This helptext"
     find(".lib-popover-tip", :visible => true).text.length.should_not be 0
     elem.trigger(:mouseleave)
-    page.should have_selector('.lib-popover-tip', visible: false)
+    expect(page).to have_selector('.lib-popover-tip', visible: false)
   }
 end
 
@@ -102,7 +102,7 @@ Then /^I should see the search result:$/ do |table|
 end
 
 Then /^I should be logged in as "([^\"]+)"$/ do |user|
-  page.should have_css("a[data-username=\"#{user}\"]", :visible => true)
+  expect(page).to have_css("a[data-username=\"#{user}\"]", :visible => true)
 end
 
 Then /^I should see these strings$/ do |strings|
@@ -163,7 +163,7 @@ end
 
 Then /^waiting until I see (?:([\d]+) )?"([^"]*)"$/ do |n, string|
   Synchronization::wait_until do
-    page.should have_content(string, :count => n)
+    expect(page).to have_content(string, :count => n)
   end
 end
 
@@ -186,7 +186,7 @@ Then /^I should see a notification containing the text "([^\"]*)"$/ do |notifica
 end
 
 Then /^I should see (?:a|an) (error|info|success|warning) notification containing the text "([^\"]*)"$/ do |type, notification_text|
-  page.should(have_selector("div.notify-notification.#{type}", text: /#{notification_text}/))
+  expect(page).to(have_selector("div.notify-notification.#{type}", text: /#{notification_text}/))
 end
 
 When /^I sort the filter result table by "(.*?)"$/ do |arg1|
@@ -223,7 +223,7 @@ Then /^The (.*?) row of the filter result table should contain "(.*?)"$/ do |pos
     page.evaluate_script('$.active') == 0
   end
   within(:css, "div#filter_result table tbody tr:#{pos}-child") do
-    page.should have_content(str)
+    expect(page).to have_content(str)
   end
 end
 
