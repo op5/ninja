@@ -311,11 +311,11 @@ end
 # WARNING: should be used with the row selector in the hacks section below, such as
 #   Then the "flubb" column should be "boing" on the row where "moggie" is "yes"
 Then /^the "(.*?)" column should be "([^"]*?)"$/ do |header, value|
-  is_expected.to have_xpath("./td[contains(.,'" + value + "') and count(preceding-sibling::td) = count(../../../thead[position()=last()]/tr/th[contains(.,'" + header + "')]/preceding-sibling::th)]")
+  expect(page).to have_xpath("./td[contains(.,'" + value + "') and count(preceding-sibling::td) = count(../../../thead[position()=last()]/tr/th[contains(.,'" + header + "')]/preceding-sibling::th)]")
 end
 
 Then /^there should be a ([^ ]+) shield$/ do |color|
-  is_expected.to have_xpath("./td/span[@title='#{color}']")
+  expect(page).to have_xpath("./td/span[@title='#{color}']")
 end
 
 #

@@ -35,7 +35,7 @@ Capybara.default_driver = :apparition
 Capybara.javascript_driver = :apparition
 
 Capybara.run_server = false
-Capybara.default_max_wait_time = 30
+Capybara.default_max_wait_time = 10
 Capybara.match = :prefer_exact
 
 Syslog.open("cucumber", 0, Syslog::LOG_DAEMON)
