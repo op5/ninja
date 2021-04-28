@@ -19,14 +19,15 @@ Capybara.register_driver :apparition do |app|
   Capybara::Apparition::Driver.new(
     app,
     js_errors: false,
+    headless: true,
+    browser_logger: STDOUT,
+    timeout: 3,
+    ignore_https_errors: true,
+    screen_size: [1920, 1080],
+    skip_image_loading: false,
+    js_errors: false,
     browser_options: {
-    'no-sandbox' => true,
-    'disable-web-security' => true,
-    'disable-features' => 'VizDisplayCompositor',
-    'headless' => false,
-    'ignore-certificate-errors' => true,
-    'width' => 1920,
-    'height' => 1080,
+      'no-sandbox' => nil, 'disable-web-security' => nil, 'disable-features' => 'VizDisplayCompositor'
     })
 end
 
