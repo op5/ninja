@@ -131,6 +131,7 @@ end
 
 When /^I select "(.*)" from the report_type dropdown$/ do |opt|
   WaitForAjax.wait_for_ajax
+  sleep(5)
   select(opt, :from => "Report type")
   #page.evaluate_script(document.getElementById("report_type").dispatchEvent(new Event("change")))
   WaitForAjax.wait_for_ajax
