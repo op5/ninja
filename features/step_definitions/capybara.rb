@@ -150,7 +150,9 @@ When /^I save (?:the )value of "([^"]*)" as "([^"]*)"$/ do |sel, var|
 end
 
 When /^I enter "([^"]*)" into "([^"]*)"$/ do |val, sel|
+  WaitForAjax.wait_for_ajax
   fill_in(sel % @params, :with => val)
+  WaitForAjax.wait_for_ajax
 end
 
 When(/^I attach "(.*?)" to "(.*?)"$/) do |filename, sel|

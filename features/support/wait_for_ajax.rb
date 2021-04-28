@@ -3,7 +3,7 @@ module WaitForAjax
   
   #Helper Functions
   def wait_for_ajax
-    attempts = 10
+    attempts = 20
     while attempts >= 0 and not finished_all_ajax_requests? do
       attempts -= 1
       # It's had 5 seconds to load, maybe it's stuck? Reload and keep trying.

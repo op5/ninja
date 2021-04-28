@@ -35,7 +35,7 @@ Capybara.default_driver = :apparition
 Capybara.javascript_driver = :apparition
 
 Capybara.run_server = false
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 20
 Capybara.match = :prefer_exact
 
 Syslog.open("cucumber", 0, Syslog::LOG_DAEMON)
@@ -71,7 +71,7 @@ Before do |scenario|
   when Cucumber::Core::Ast::Scenario
     @scenario_name = scenario.name
   else
-    raise('Unhandled scenario class')
+    raise('Unhandled scenario class', scenario)
   end
 end
 
