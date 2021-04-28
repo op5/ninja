@@ -19,7 +19,6 @@ Capybara.register_driver :apparition do |app|
   Capybara::Apparition::Driver.new(
     app,
     js_errors: false,
-    extensions: ['application/src/js/00_jquery.js'],
     browser_options: {
     'no-sandbox' => true,
     'disable-web-security' => true,
