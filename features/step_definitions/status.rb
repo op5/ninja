@@ -13,7 +13,7 @@ Then /^all helptexts should be defined$/ do
     expect(page).to have_css(".lib-popover-tip", :visible => true)
     # "This helptext (%s) is not translated yet" is only printed by convention, but it appears we follow it
     expect(page).to have_no_content "This helptext"
-    expect(find(".lib-popover-tip", :visible => true).text.length).to_not be 0
+    expect(find(".lib-popover-tip", :visible => true).text.length).not_to be 0
     elem.trigger(:mouseleave)
     expect(page).to have_selector('.lib-popover-tip', visible: false)
   }

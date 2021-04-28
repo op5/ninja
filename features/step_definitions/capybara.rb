@@ -221,7 +221,7 @@ Then /^I should see regex "([^"]*)"$/ do |regex|
 end
 
 Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
-  expect(/#{regex}/).to_not match page.document.text
+  expect(/#{regex}/).not_to match page.document.text
 end
 
 Then /^I should see (?:([\d]+) )?link "([^"]*)"$/ do |n, string|
@@ -261,7 +261,7 @@ Then /^css "([^"]*)" should contain "(.*)"$/ do |element, value|
 end
 
 Then /^"([^"]*)" shouldn't contain "(.*)"$/ do |element, value|
-  expect(find_field(element).value.strip).to_not == value
+  expect(find_field(element).value.strip).not_to == value
 end
 
 Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|
@@ -269,7 +269,7 @@ Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|
 end
 
 Then /^"([^"]*)" shouldn't contain regex "(.*)"$/ do |element, value|
-	expect(find_field(element).value).to_not match(/#{value}/)
+	expect(find_field(element).value).not_to match(/#{value}/)
 end
 
 Then /^"([^"]*)" should be checked$/ do |id|
