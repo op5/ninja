@@ -18,14 +18,13 @@ end
 Capybara.register_driver :apparition do |app|
   Capybara::Apparition::Driver.new(
     app,
-    js_errors: false,
+    js_errors: true,
     headless: true,
     browser_logger: STDOUT,
     timeout: 3,
     ignore_https_errors: true,
     screen_size: [1920, 1080],
-    skip_image_loading: false,
-    js_errors: false,
+    skip_image_loading: true,
     browser_options: {
       'no-sandbox' => nil, 'disable-web-security' => nil, 'disable-features' => 'VizDisplayCompositor'
     })
@@ -66,12 +65,15 @@ end
 Before do |scenario|
   @params = {}
   case scenario.source.last
-  when Cucumber::Core::Ast::ScenarioOutline
-    @scenario_name = scenario.scenario_outline.name
-  when Cucumber::Core::Ast::Scenario
-    @scenario_name = scenario.name
-  else
-    raise('Unhandled scenario class', scenario)
+    when Cucumber::Core::Ast::ScenarioOutline
+      @scenario_name = scenario.scenario_outline.name
+    when Cucumber::Core::Ast::Scenario
+      @scenario_name = scenario.name
+    when Cucumber::Core::Ast::ExamplesTable::Row
+      @scenario_name = scenario.name
+    else
+      puts scenario.source.last
+      raise('Unhandled scenario class')
   end
 end
 

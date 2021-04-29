@@ -215,15 +215,15 @@ Then /^I should see "([^"]*)", compensating for DST$/ do |string|
 end
 
 Then /^I shouldn't see "([^"]*)"$/ do |string|
-  expect(page).not_to have_content(string)
+  page.should_not have_content(string)
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
-  expect(/#{regex}/).to match page.document.text
+  /#{regex}/.should_not match page.document.text
 end
 
 Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
-  expect(/#{regex}/).not_to match page.document.text
+  /#{regex}/.should_not match page.document.text
 end
 
 Then /^I should see (?:([\d]+) )?link "([^"]*)"$/ do |n, string|

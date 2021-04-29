@@ -3,13 +3,9 @@ module WaitForAjax
   
   #Helper Functions
   def wait_for_ajax
-    attempts = 20
+    attempts = 5
     while attempts >= 0 and not finished_all_ajax_requests? do
       attempts -= 1
-      # It's had 5 seconds to load, maybe it's stuck? Reload and keep trying.
-      if attempts % 5 == 0 then
-        Capybara.page.evaluate_script("window.location.reload()")
-      end
       sleep(1)
     end
   end
