@@ -20,11 +20,9 @@ Capybara.register_driver :apparition do |app|
     app,
     js_errors: true,
     headless: true,
-    browser_logger: STDOUT,
     timeout: 3,
     ignore_https_errors: true,
     screen_size: [1920, 1080],
-    skip_image_loading: true,
     browser_options: {
       'no-sandbox' => nil, 'disable-web-security' => nil, 'disable-features' => 'VizDisplayCompositor'
     })
@@ -77,10 +75,10 @@ Before do |scenario|
   end
 end
 
-#Before do |scenario|
-  #@params = {}
-  #Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
-#end
+Before do |scenario|
+  @params = {}
+  Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
+end
 
 Before ('@configuration') do
   @configuration = Configuration::NagiosConfiguration.new

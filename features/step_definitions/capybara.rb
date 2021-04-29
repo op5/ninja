@@ -48,13 +48,17 @@ Given /^these log messages have been sent:$/ do |table|
 end
 
 When /^I hover over "(.*)"$/ do |element|
-	page.find(:css, "[title=\"#{element}\"], [id=\"#{element}\"], [label=\"#{element}\"]").hover
+  WaitForAjax.wait_for_ajax
+  page.find(:css, "[title=\"#{element}\"], [id=\"#{element}\"], [label=\"#{element}\"]").hover
+  WaitForAjax.wait_for_ajax
 end
 
 # This should be removed when MON-7582 (new menus, the only thing
 # requiring this) is merged.
 When /^I hover over the "(.*)" button$/ do |element|
-	page.find("##{element.downcase}-button").hover
+  WaitForAjax.wait_for_ajax
+  page.find("##{element.downcase}-button").hover
+  WaitForAjax.wait_for_ajax
 end
 
 #
@@ -81,36 +85,43 @@ end
 When /^I click link "([^"]*)"$/ do |link|
   WaitForAjax.wait_for_ajax
   click_link link
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I click button "([^"]*)"$/ do |button|
   WaitForAjax.wait_for_ajax
   click_button(button)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I click "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax
   click_on id
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I check "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax
   check(id)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I uncheck "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax  
   uncheck(id)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I select "([^"]*)"$/ do |opt|
   WaitForAjax.wait_for_ajax
   select(opt)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I choose "([^"]*)"$/ do |opt|
   WaitForAjax.wait_for_ajax
   choose(opt)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I deselect options in "([^"]*)"$/ do |sel|
@@ -120,6 +131,7 @@ When /^I deselect options in "([^"]*)"$/ do |sel|
       opt.unselect_option
     end
   end
+  WaitForAjax.wait_for_ajax
 end
 
 
@@ -138,15 +150,21 @@ When /^I select "(.*)" from the report_type dropdown$/ do |opt|
 end
 
 When /^I click xpath "([^"]*)"$/ do |xp|
+  WaitForAjax.wait_for_ajax
   find(:xpath, xp).click
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I click css "([^"]*)"$/ do |xp|
+  WaitForAjax.wait_for_ajax
   find(:css, xp).click
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I save (?:the )value of "([^"]*)" as "([^"]*)"$/ do |sel, var|
+  WaitForAjax.wait_for_ajax
   @params[var.to_sym] = find("input[name=#{sel}]", :visible => false).value
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I enter "([^"]*)" into "([^"]*)"$/ do |val, sel|
@@ -156,7 +174,9 @@ When /^I enter "([^"]*)" into "([^"]*)"$/ do |val, sel|
 end
 
 When(/^I attach "(.*?)" to "(.*?)"$/) do |filename, sel|
+  WaitForAjax.wait_for_ajax
   attach_file(sel, filename)
+  WaitForAjax.wait_for_ajax
 end
 
 When /^I note the value of "(.*)"$/ do |field|
@@ -173,25 +193,33 @@ Then /^"(.*?)" should be shown as "(.*?)"$/ do |key, value|
 end
 
 When /^I hover over the "(.*)" menu$/ do |element|
+  WaitForAjax.wait_for_ajax
   page.find('a span', :text => element, :match => :prefer_exact, :visible => true).hover
+  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should see these menu items:$/ do |table|
+  WaitForAjax.wait_for_ajax
   rows = table.raw
   rows.each do |row|
     expect(page).to have_link(row[0])
   end
+  WaitForAjax.wait_for_ajax
 end
 
 #
 # Text matching in output
 #
 Then /^I should see the "(.*)" table$/ do |tablename|
+  WaitForAjax.wait_for_ajax
   page.has_table? tablename
+  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should see (?:([\d]+) )?"([^"]*)"$/ do |n, string|
+  WaitForAjax.wait_for_ajax
   expect(page).to have_content(string, :count => n)
+  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should see "([^"]*)", compensating for DST$/ do |string|
@@ -215,18 +243,15 @@ Then /^I should see "([^"]*)", compensating for DST$/ do |string|
 end
 
 Then /^I shouldn't see "([^"]*)"$/ do |string|
-  WaitForAjax.wait_for_ajax
-  expect(page).not_to have_content(string)
+  expect(page).to_not have_content(string)
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
-  WaitForAjax.wait_for_ajax
-  /#{regex}/.should_not match page.document.text
+  expect(/#{regex}/).to match page.document.text
 end
 
 Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
-  WaitForAjax.wait_for_ajax
-  /#{regex}/.should_not match page.document.text
+  expect(/#{regex}/).to_not match page.document.text
 end
 
 Then /^I should see (?:([\d]+) )?link "([^"]*)"$/ do |n, string|
@@ -250,7 +275,7 @@ Then /^I should see (?:([\d]+) )?css "([^"]*)"$/ do |n, selector|
 end
 
 Then /^I shouldn't see css "([^"]*)"$/ do |selector|
-  expect(page).not_to have_css(selector)
+  expect(page).to_not have_css(selector)
 end
 
 Then /^Link "([^"]*)" should contain "(.*)"$/ do |linkel, value|
@@ -266,7 +291,7 @@ Then /^css "([^"]*)" should contain "(.*)"$/ do |element, value|
 end
 
 Then /^"([^"]*)" shouldn't contain "(.*)"$/ do |element, value|
-  expect(find_field(element).value.strip).not_to == value
+  expect(find_field(element).value.strip).to_not == value
 end
 
 Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|
@@ -274,7 +299,7 @@ Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|
 end
 
 Then /^"([^"]*)" shouldn't contain regex "(.*)"$/ do |element, value|
-	expect(find_field(element).value).not_to match(/#{value}/)
+	expect(find_field(element).value).to_not match(/#{value}/)
 end
 
 Then /^"([^"]*)" should be checked$/ do |id|
@@ -298,7 +323,7 @@ Then /^"([^"]*)" should have option "(.*)"$/ do |sel, opt|
 end
 
 Then /^"([^"]*)" shouldn't have option "(.*)"$/ do |sel, opt|
-  expect(page).not_to have_select(sel, :with_options => [opt])
+  expect(page).to_not have_select(sel, :with_options => [opt])
 end
 
 Then /^"([^"]*)" should be enabled$/ do |sel|

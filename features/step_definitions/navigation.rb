@@ -27,14 +27,12 @@ end
 
 # duplicate from op5license, alias of "I'm on the list view for query"
 Given /^I go to the listview for (.*)$/ do |query|
-	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers::path_to("list view") + '?q=' + query
 	WaitForAjax.wait_for_ajax()
 end
 
 # page_name could be "login page" etc
 Given /^I am on the ([^"]*)$/ do |page_name|
-WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers.path_to(page_name)
 	WaitForAjax.wait_for_ajax()
 

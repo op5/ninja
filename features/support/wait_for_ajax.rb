@@ -11,8 +11,10 @@ module WaitForAjax
   end
 
   def finished_all_ajax_requests?
-    if Capybara.page.evaluate_script('typeof(jQuery) === "function"')
-      Capybara.page.evaluate_script('document.readyState === "complete" && jQuery.active === 0')
+    if Capybara.page.evaluate_script('document.readyState === "complete"')
+      if Capybara.page.evaluate_script('typeof(jQuery) === "function"')
+        Capybara.page.evaluate_script('jQuery.active === 0')
+      end
     end
   end
 
