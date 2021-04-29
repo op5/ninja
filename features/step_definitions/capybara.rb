@@ -215,14 +215,17 @@ Then /^I should see "([^"]*)", compensating for DST$/ do |string|
 end
 
 Then /^I shouldn't see "([^"]*)"$/ do |string|
-  page.should_not have_content(string)
+  WaitForAjax.wait_for_ajax
+  expect(page).not_to have_content(string)
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
+  WaitForAjax.wait_for_ajax
   /#{regex}/.should_not match page.document.text
 end
 
 Then /^I shouldn't see regex "([^"]*)"$/ do |regex|
+  WaitForAjax.wait_for_ajax
   /#{regex}/.should_not match page.document.text
 end
 
