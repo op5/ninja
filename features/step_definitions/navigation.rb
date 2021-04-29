@@ -6,25 +6,21 @@ require_relative '../support/wait_for_ajax'
 
 # url should be "https://...."
 Given /^I am on "(.*)"$/ do |url|
-	WaitForAjax.wait_for_ajax()
 	visit url
 	WaitForAjax.wait_for_ajax()
 end
 
 Given /^I'm on the list view for query "(.*)"$/ do |query|
-  WaitForAjax.wait_for_ajax()
   visit NavigationHelpers::path_to("list view") + '?q=' + query
   WaitForAjax.wait_for_ajax()
 end
 
 Given /^I am on a (.*) list view with query "(.*)"$/ do |type, query|
-  WaitForAjax.wait_for_ajax()
   visit NavigationHelpers::path_to("list view") + '?q=['+type+']' + query
   WaitForAjax.wait_for_ajax()
 end
 
 Given /^I am on a (.*) list view$/ do |type|
-  WaitForAjax.wait_for_ajax()
   visit NavigationHelpers::path_to("list view") + '?q=['+type+'] all'
   WaitForAjax.wait_for_ajax()
 end
@@ -46,28 +42,24 @@ end
 
 # path should be "/index.php/..."
 Given /^I am on address "(.*)"$/ do |path|
-	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers::url_for(path)
 	WaitForAjax.wait_for_ajax()
 
 end
 
 Given /^I am on a non existing page$/ do
-	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers::url_for("/index.php/this_page_does_not_exists")
 	WaitForAjax.wait_for_ajax()
 
 end
 
 Given /^I visit the process information page$/ do
-	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers::url_for("/index.php/extinfo/show_process_info")
 	WaitForAjax.wait_for_ajax()
 
 end
 
 Given /^I visit the object details page for (host|hostgroup|servicegroup) "(.*)"$/ do |type, object|
-	WaitForAjax.wait_for_ajax()
 	object = URI.escape(object, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	visit NavigationHelpers::url_for("/index.php/extinfo/details?#{type}=#{object}")
 	WaitForAjax.wait_for_ajax()
@@ -75,7 +67,6 @@ Given /^I visit the object details page for (host|hostgroup|servicegroup) "(.*)"
 end
 
 Given /^I visit the object details page for service "(.*)" on host "(.*)"$/ do |object, parent|
-	WaitForAjax.wait_for_ajax()
 	object = URI.escape(object, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	parent = URI.escape(parent, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	visit NavigationHelpers::url_for("/index.php/extinfo/details?host=#{parent}&service=#{object}")
@@ -84,7 +75,6 @@ Given /^I visit the object details page for service "(.*)" on host "(.*)"$/ do |
 end
 
 Given /^I visit the alert history page for (host|service|hostgroup|servicegroup) "(.*)"$/ do |type, host|
-	WaitForAjax.wait_for_ajax()
 	host = URI.escape(host, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	visit NavigationHelpers::url_for("/index.php/alert_history/generate?report_type=#{type}s&objects[0]=#{host}")
 	WaitForAjax.wait_for_ajax()
