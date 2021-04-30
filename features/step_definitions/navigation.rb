@@ -34,34 +34,29 @@ end
 # page_name could be "login page" etc
 Given /^I am on the ([^"]*)$/ do |page_name|
 	visit NavigationHelpers.path_to(page_name)
-	WaitForAjax.wait_for_ajax()
-
+	sleep(5)
 end
 
 # path should be "/index.php/..."
 Given /^I am on address "(.*)"$/ do |path|
 	visit NavigationHelpers::url_for(path)
-	WaitForAjax.wait_for_ajax()
-
+	sleep(5)
 end
 
 Given /^I am on a non existing page$/ do
 	visit NavigationHelpers::url_for("/index.php/this_page_does_not_exists")
 	WaitForAjax.wait_for_ajax()
-
 end
 
 Given /^I visit the process information page$/ do
 	visit NavigationHelpers::url_for("/index.php/extinfo/show_process_info")
 	WaitForAjax.wait_for_ajax()
-
 end
 
 Given /^I visit the object details page for (host|hostgroup|servicegroup) "(.*)"$/ do |type, object|
 	object = URI.escape(object, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	visit NavigationHelpers::url_for("/index.php/extinfo/details?#{type}=#{object}")
 	WaitForAjax.wait_for_ajax()
-
 end
 
 Given /^I visit the object details page for service "(.*)" on host "(.*)"$/ do |object, parent|
@@ -69,7 +64,6 @@ Given /^I visit the object details page for service "(.*)" on host "(.*)"$/ do |
 	parent = URI.escape(parent, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
 	visit NavigationHelpers::url_for("/index.php/extinfo/details?host=#{parent}&service=#{object}")
 	WaitForAjax.wait_for_ajax()
-
 end
 
 Given /^I visit the alert history page for (host|service|hostgroup|servicegroup) "(.*)"$/ do |type, host|

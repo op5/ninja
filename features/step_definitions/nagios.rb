@@ -54,4 +54,5 @@ And /^I have activated the configuration$/ do
   # inject code between the execution of the background and the actual
   # scenario. I probably just haven't looked hard enough...?
   @configuration.activate
+  sleep(2)
 end

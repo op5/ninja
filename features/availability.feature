@@ -107,7 +107,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		And I select "win-server1" from the multiselect "objects_tmp"
@@ -384,18 +384,18 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Up"
 		And I shouldn't see "Ok"
 		When I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then I should see "Ok"
-		And I shouldn't see "Up"
+		And I shouldn't see "servicegroup_up"
 		When I click "Show report"
 		Then I should see "Servicegroup breakdown"
 		When I am on address "/index.php/avail/edit_settings?with_chrome=1&report_type=servicegroups&objects%5B0%5D=pings"
 		Then I should see "Ok"
-		And I shouldn't see "Up"
+		And I shouldn't see "servicegroup_up"
 
 	@reports
 	Scenario: Save report with misc options

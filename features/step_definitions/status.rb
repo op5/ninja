@@ -146,6 +146,7 @@ When /I select "(.*)" from the multiselect "(.*)"$/ do |option, selector|
   tmp_sel = find_field(find_field(selector)[:id].sub('[', '_tmp['))
   tmp_sel.select(option)
   page.execute_script("$('##{tmp_sel[:id].gsub('[', '\\\\\[').gsub(']', '\\\\\]')}').trigger('change');")
+  WaitForAjax.wait_for_ajax
 end
 
 When /I deselect "(.*)" from the multiselect "(.*)"$/ do |option, selector|
@@ -153,6 +154,7 @@ When /I deselect "(.*)" from the multiselect "(.*)"$/ do |option, selector|
   tmp_sel = find_field(selector)
   tmp_sel.select(option)
   page.execute_script("$('##{tmp_sel[:id].gsub('[', '\\\\\[').gsub(']', '\\\\\]')}').trigger('change');")
+  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should see a notification$/ do

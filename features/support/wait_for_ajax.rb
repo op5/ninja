@@ -15,6 +15,7 @@ module WaitForAjax
       if Capybara.page.evaluate_script('typeof jQuery == "function"')
         return true
       end
+    end
   end
 
   end

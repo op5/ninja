@@ -20,9 +20,28 @@ When /^Screenshot "([^"]*)"$/ do |fname|
   end
   Dir::mkdir(screen_dir) if not File.directory?(screen_dir)
   screenshot = File.join(screen_dir, fname)
-  screenshot_embed_filename = screen_dir + '/' + fname
-  page.driver.render(screenshot, :full => true)
-  embed screenshot_embed_filename, 'image/png'
+	screenshot_embed_filename = "./screenshots/Custom_#{@scenario_name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}.png"
+	page.save_screenshot(screenshot, full: true)
+	embed screenshot_embed_filename, 'image/png'
+end
+
+
+When /^Screenshot test$/ do
+  if ENV['CUKE_SCREEN_DIR']
+    screen_dir = ENV['CUKE_SCREEN_DIR']
+  else
+    screen_dir = './screenshots'
+  end
+	if ENV['CUKE_SCREEN_DIR']
+	  screen_dir = ENV['CUKE_SCREEN_DIR']
+	else
+	  screen_dir = './screenshots'
+	end
+	Dir::mkdir(screen_dir) if not File.directory?(screen_dir)
+	screenshot = File.join(screen_dir, "FAILED_#{@scenario_name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}.png")
+	screenshot_embed_filename = "./screenshots/FAILED_#{@scenario_name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}.png"
+	page.save_screenshot(screenshot, full: true)
+	embed screenshot_embed_filename, 'image/png'
 end
 
 # This will not work from buildbot slaves - run your tests locally.
@@ -100,6 +119,11 @@ When /^I click "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax
 end
 
+When /^I click the Create Availability Report button$/ do
+  click_on("Create Availability Report")
+  sleep(5)
+end
+
 When /^I check "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax
   check(id)
@@ -142,11 +166,9 @@ When /^I select "(.*)" from "([^"]*)"$/ do |opt, sel|
 end
 
 When /^I select "(.*)" from the report_type dropdown$/ do |opt|
-  WaitForAjax.wait_for_ajax
-  sleep(5)
   select(opt, :from => "Report type")
   #page.evaluate_script(document.getElementById("report_type").dispatchEvent(new Event("change")))
-  WaitForAjax.wait_for_ajax
+  sleep(5)
 end
 
 When /^I click xpath "([^"]*)"$/ do |xp|
@@ -243,7 +265,7 @@ Then /^I should see "([^"]*)", compensating for DST$/ do |string|
 end
 
 Then /^I shouldn't see "([^"]*)"$/ do |string|
-  expect(page).to_not have_content(string)
+  page.should_not have_content(string)
 end
 
 Then /^I should see regex "([^"]*)"$/ do |regex|
