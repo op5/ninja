@@ -75,12 +75,12 @@ Before do |scenario|
   end
 end
 
-Before do |scenario|
-  @params = {}
-  if scenario_name
-    Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
-  end
-end
+#Before do |scenario|
+#  @params = {}
+#  if scenario_name
+#    Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
+#  end
+#end
 
 Before ('@configuration') do
   @configuration = Configuration::NagiosConfiguration.new
