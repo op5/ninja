@@ -120,9 +120,18 @@ When /^I click "([^"]*)"$/ do |id|
 end
 
 When /^I click the Create Availability Report button$/ do
+  WaitForAjax.wait_for_ajax
   click_on("Create Availability Report")
-  sleep(5)
+  WaitForAjax.wait_for_ajax
 end
+
+And /^I click the Show report button$/ do
+  WaitForAjax.wait_for_ajax
+  click_on("Show report")
+  WaitForAjax.wait_for_ajax
+end
+
+ 
 
 When /^I check "([^"]*)"$/ do |id|
   WaitForAjax.wait_for_ajax
@@ -167,8 +176,9 @@ end
 
 When /^I select "(.*)" from the report_type dropdown$/ do |opt|
   select(opt, :from => "Report type")
-  #page.evaluate_script(document.getElementById("report_type").dispatchEvent(new Event("change")))
-  sleep(5)
+  #sleep(1)
+  #page.execute_script('window.document.getElementById("report_type").dispatchEvent(new Event("change"))')
+  #WaitForAjax.wait_for_ajax
 end
 
 When /^I click xpath "([^"]*)"$/ do |xp|
@@ -301,19 +311,19 @@ Then /^I shouldn't see css "([^"]*)"$/ do |selector|
 end
 
 Then /^Link "([^"]*)" should contain "(.*)"$/ do |linkel, value|
-  expect(find_link(linkel).text.strip).to =~ /#{value}/
+  find_link(linkel).text.strip.should =~ /#{value}/
 end
 
 Then /^"([^"]*)" should contain "(.*)"$/ do |element, value|
-  expect(find_field(element % @params).value.strip).to == value
+  find_field(element % @params).value.strip.should == value
 end
 
 Then /^css "([^"]*)" should contain "(.*)"$/ do |element, value|
-  expect(find(element).value.strip).to == value
+  find(element).value.strip.should == value
 end
 
 Then /^"([^"]*)" shouldn't contain "(.*)"$/ do |element, value|
-  expect(find_field(element).value.strip).to_not == value
+  find_field(element).value.strip.should_not == value
 end
 
 Then /^"([^"]*)" should contain regex "(.*)"$/ do |element, value|

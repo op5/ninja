@@ -42,4 +42,4 @@ post:
     mkdir -p /mnt/logs
     echo "core ulimit: \$(ulimit -c)"
     export CUKE_SCREEN_DIR=/mnt/logs/screenshots
-    cucumber --retry 1 --no-strict-flaky -t "not @unreliable" --format html --out /mnt/logs/cucumber.html --format pretty
+    cucumber --retry 2 --no-strict-flaky -t "not @unreliable" --format html --out /mnt/logs/cucumber.html --format pretty

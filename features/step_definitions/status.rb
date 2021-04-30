@@ -230,5 +230,5 @@ Then /^The (.*?) row of the filter result table should contain "(.*?)"$/ do |pos
 end
 
 Then /^I should see trend graph have background color "([^\"]+)"$/ do |color|
-  page.find("div", '[style="background: #{color};"]', :visible => true)
+  page.find("div", "[style='background: #{color};']", :visible => true)
 end

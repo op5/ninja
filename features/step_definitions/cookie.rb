@@ -11,6 +11,7 @@ Then(/^I should have a tasty cookie$/) do
 end
 
 Then(/^I check for cookie bar$/) do
+	sleep(2)
 	steps %Q{
 		And I should see "OP5 Monitor uses cookies"
 		And I click the got it button

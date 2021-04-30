@@ -46,7 +46,7 @@ Feature: Scheduled reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		When I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
 		When I click "Show report"
@@ -116,7 +116,7 @@ Feature: Scheduled reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "saved test report"
 		When I select "saved test report"

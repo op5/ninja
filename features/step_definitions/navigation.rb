@@ -33,14 +33,16 @@ end
 
 # page_name could be "login page" etc
 Given /^I am on the ([^"]*)$/ do |page_name|
+	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers.path_to(page_name)
-	sleep(5)
+	WaitForAjax.wait_for_ajax()
 end
 
 # path should be "/index.php/..."
 Given /^I am on address "(.*)"$/ do |path|
+	WaitForAjax.wait_for_ajax()
 	visit NavigationHelpers::url_for(path)
-	sleep(5)
+	WaitForAjax.wait_for_ajax()
 end
 
 Given /^I am on a non existing page$/ do

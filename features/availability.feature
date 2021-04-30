@@ -44,7 +44,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I click "Show report"
 		Then I should see "Please select what objects to base the report on"
 		And I should see "Report Settings"
@@ -54,7 +54,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "EmptyGroup" from the multiselect "objects_tmp"
 		Then "objects" should have option "EmptyGroup"
 		When I click "Show report"
@@ -62,12 +62,11 @@ Feature: Availability reports
 		And I should see "Report Settings"
 
 	@reports
-	@unreliable
 	Scenario: Generate report on empty servicegroup
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Servicegroups" from the report_type dropdown
 		And I select "empty" from the multiselect "objects_tmp"
 		Then "objects" should have option "empty"
@@ -80,7 +79,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Hosts" from the report_type dropdown
 		And I select "linux-server1" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1"
@@ -135,7 +134,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
@@ -156,7 +155,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server1;System Load" from the multiselect "objects_tmp"
@@ -181,7 +180,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		And I select "linux-server2;System Load" from the multiselect "objects_tmp"
@@ -207,7 +206,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
 		When I check "Use alias"
@@ -227,7 +226,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		And I select "WindowsServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
@@ -250,7 +249,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		And I select "MixedGroup" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
@@ -273,7 +272,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		Then "objects" should have option "pings"
@@ -297,7 +296,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Servicegroups" from the report_type dropdown
 		And I select "pings" from the multiselect "objects_tmp"
 		And I select "empty" from the multiselect "objects_tmp"
@@ -323,7 +322,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
 		When I select "Custom" from "Reporting period"
@@ -341,7 +340,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
 		When I select "Custom" from "Reporting period"
@@ -359,7 +358,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
 		And I should see "Up"
@@ -402,7 +401,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I shouldn't see "Saved reports"
 		#And "Saved reports" shouldn't have option "saved test report"
 		When I select "LinuxServers" from the multiselect "objects_tmp"
@@ -444,7 +443,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		When I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "saved test report"
 		When I select "saved test report" from "Saved reports"
@@ -479,7 +478,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "saved test report"
 		When I select "saved test report"
@@ -495,7 +494,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		When I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "test report1"
 		When I select "test report1" from "Saved reports"
@@ -520,7 +519,7 @@ Feature: Availability reports
 		Then I should see "Report was successfully saved"
 		When I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "test report1"
 		When I select "test report1" from "Saved reports"
@@ -531,7 +530,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I shouldn't see "Saved reports"
 		When I select "LinuxServers" from the multiselect "objects_tmp"
 		Then "objects" should have option "LinuxServers"
@@ -558,7 +557,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		When I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		Then I should see "Saved reports"
 		And "Saved reports" should have option "Report_Last_31_days"
 		When I select "Report_Last_31_days" from "Saved reports"
@@ -585,7 +584,7 @@ Feature: Availability reports
 		Given I am on the Host details page
 		And I hover over the "Report" menu
 		And I hover over the "Availability" menu
-		When I click "Create Availability Report"
+		When I click the Create Availability Report button
 		And I select "Services" from the report_type dropdown
 		And I select "linux-server1;PING" from the multiselect "objects_tmp"
 		Then "objects" should have option "linux-server1;PING"
