@@ -77,21 +77,21 @@ end
 #use to include querystrings in the match
 Then /^I should be on url "([^"]*)"$/ do |url|
 	#prepend right op with https://localhost for matching
-	expect(current_url).to ==  NavigationHelpers::url_for(url)
+	current_url.should ==  NavigationHelpers::url_for(url)
 end
 
 #use to include querystrings in the match
 Then /^I should be on list view with filter '([^']*)'$/ do |filter|
 	query = URI.escape(filter, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
-	expect(current_url).to ==  NavigationHelpers::path_to("list view") + '?q=' + query
+	current_url.should ==  NavigationHelpers::path_to("list view") + '?q=' + query
 end
 
 Then /^I should be on the (.*)$/ do |page_name|
-	expect(NavigationHelpers::url_for(current_path)).to == NavigationHelpers::path_to(page_name)
+	NavigationHelpers::url_for(current_path).should == NavigationHelpers::path_to(page_name)
 end
 
 Then /^I should be on address "([^"]*)"$/ do |page_name|
-	expect(NavigationHelpers::url_for(current_path)).to == NavigationHelpers::url_for(page_name)
+	NavigationHelpers::url_for(current_path).should == NavigationHelpers::url_for(page_name)
 end
 
 Then /^I view a "([^\"]+)" report with these settings:$/ do |report, table|

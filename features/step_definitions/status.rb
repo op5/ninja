@@ -95,17 +95,21 @@ When /^I submit the search$/ do
 end
 
 Then /^I should see the search result:$/ do |table|
+  WaitForAjax.wait_for_ajax
   rows = table.raw
   rows.each do |row|
     page.find('.autocomplete a', :text => row[0]).visible?
   end
+  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should be logged in as "([^\"]+)"$/ do |user|
+  WaitForAjax.wait_for_ajax
   expect(page).to have_css("a[data-username=\"#{user}\"]", :visible => true)
 end
 
 Then /^I should see these strings$/ do |strings|
+  WaitForAjax.wait_for_ajax
   rows = strings.raw
   rows.each do |string|
     steps %Q{
@@ -230,5 +234,7 @@ Then /^The (.*?) row of the filter result table should contain "(.*?)"$/ do |pos
 end
 
 Then /^I should see trend graph have background color "([^\"]+)"$/ do |color|
+  #Argument unused error.
+  color = color
   page.find("div", "[style='background: #{color};']", :visible => true)
 end

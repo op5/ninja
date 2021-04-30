@@ -69,7 +69,6 @@ end
 When /^I hover over "(.*)"$/ do |element|
   WaitForAjax.wait_for_ajax
   page.find(:css, "[title=\"#{element}\"], [id=\"#{element}\"], [label=\"#{element}\"]").hover
-  WaitForAjax.wait_for_ajax
 end
 
 # This should be removed when MON-7582 (new menus, the only thing
@@ -77,7 +76,6 @@ end
 When /^I hover over the "(.*)" button$/ do |element|
   WaitForAjax.wait_for_ajax
   page.find("##{element.downcase}-button").hover
-  WaitForAjax.wait_for_ajax
 end
 
 #
@@ -93,7 +91,7 @@ When /^I doubleclick "([^"]*)" from "([^"]*)"$/ do |opt, sel|
 end
 
 When /^I doubleclick "([^"]*)"$/ do |opt|
-  find('*', :text => opt).trigger(:dblclick)
+  find('*', :text => opt).double_click
 end
 
 When /^I click the delete icon for comment (\d+)$/ do |comment_id|
@@ -227,7 +225,6 @@ end
 When /^I hover over the "(.*)" menu$/ do |element|
   WaitForAjax.wait_for_ajax
   page.find('a span', :text => element, :match => :prefer_exact, :visible => true).hover
-  WaitForAjax.wait_for_ajax
 end
 
 Then /^I should see these menu items:$/ do |table|
