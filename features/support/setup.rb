@@ -77,7 +77,9 @@ end
 
 Before do |scenario|
   @params = {}
-  Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
+  if scenario_name
+    Syslog.log(Syslog::LOG_INFO, "Running '#{scenario_name(scenario)}'")
+  end
 end
 
 Before ('@configuration') do
