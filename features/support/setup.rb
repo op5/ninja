@@ -18,7 +18,7 @@ end
 Capybara.register_driver :apparition do |app|
   Capybara::Apparition::Driver.new(
     app,
-    js_errors: true,
+    js_errors: false,
     headless: true,
     timeout: 3,
     ignore_https_errors: true,
