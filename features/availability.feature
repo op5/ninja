@@ -489,7 +489,7 @@ Feature: Availability reports
 		And "Saved reports" shouldn't have option "saved test report"
 		And "objects" shouldn't have option "LinuxServers"
 
-	@reports @bug-7646 @set_saved_reports
+	@reports @bug-7646 @set_saved_reports @unreliable_el8
 	Scenario: Uncheck saved checkbox
 		Given I am on the Host details page
 		When I hover over the "Report" menu
@@ -580,6 +580,7 @@ Feature: Availability reports
 		And "Start date" should contain "2013-03-01"
 		Then "End date" should contain "2013-04-01"
 
+	@unreliable_el8
 	Scenario: Create availability report trend graph with report time period as workhours
 		Given I am on the Host details page
 		And I hover over the "Report" menu

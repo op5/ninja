@@ -3,6 +3,7 @@ Feature: Global search
 		Given I am logged in
 		And I am on the main page
 
+	@unreliable_el8
 	Scenario: Search for host with spaces
 		Given I have these mocked hosts
 			| name     |

@@ -498,7 +498,7 @@ Feature: SLA reports
 		And I click "Show report"
 		Then I should see "SLA breakdown"
 
-	@configuration @reports
+	@configuration @reports @unreliable_el8
 	Scenario: See that uncheck saved checkbox edit settings form content rendered correct
 		When I view a "sla" report with these settings:
 		| report_type    | objects              | use_alias | months  |
