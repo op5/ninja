@@ -23,6 +23,7 @@ Capybara.register_driver :apparition do |app|
     timeout: 3,
     ignore_https_errors: true,
     screen_size: [1920, 1080],
+    skip_image_loading: true,
     browser_options: {
       'no-sandbox' => nil, 'disable-web-security' => nil, 'disable-features' => 'VizDisplayCompositor'
     })
@@ -32,7 +33,7 @@ Capybara.default_driver = :apparition
 Capybara.javascript_driver = :apparition
 
 Capybara.run_server = false
-Capybara.default_max_wait_time = 30
+Capybara.default_max_wait_time = 7
 Capybara.match = :prefer_exact
 
 Syslog.open("cucumber", 0, Syslog::LOG_DAEMON)
