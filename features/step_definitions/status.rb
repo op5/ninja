@@ -131,9 +131,11 @@ Then /^I should see a critical icon in the raw performance data table$/ do
 end
 
 When /^I edit widget "([^\"]+)"$/ do |widget_name|
+  WaitForAjax.wait_for_ajax
   header = find('.widget-header', :text => widget_name)
   header.hover;
   header.find('.widget-editlink').click
+  WaitForAjax.wait_for_ajax
 end
 
 # Wont work until we have support for flexbox in testing

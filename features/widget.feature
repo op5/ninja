@@ -119,6 +119,7 @@ Feature: Widgets
 		And I should see css ".widget-content span[class='icon-16 x16-shield-up']"
 		And I should see css ".widget-content span[class='icon-16 x16-shield-warning']"
 
+	@unreliable_el8
 	Scenario: Widget settings when widget uses new conditional forms
 
 		Given I have these mocked dashboards

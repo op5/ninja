@@ -1,4 +1,5 @@
 @widgets
+@unreliable_el8
 Feature: Widget Menu
 
 	Background:
@@ -10,10 +11,9 @@ Feature: Widget Menu
 			|1 |1            | listview     | {"c":0,"p":0} | {"title":"My widget name"}|
 		And I am logged in
 		When I am on the main page
-		Then I should see "My widget name"
 
 	Scenario: Clicking Cancel hides widget edit form
-
+		Then I should see "My widget name"
 		When I hover css ".widget-header"
 		And I click link "Edit this widget"
 		Then I should see "Custom title"
@@ -26,7 +26,7 @@ Feature: Widget Menu
 		And I shouldn't see button "Cancel"
 
 	Scenario: Clicking Save hides widget edit form
-
+		Then I should see "My widget name"
 		When I hover css ".widget-header"
 		And I click link "Edit this widget"
 		Then I should see "Custom title"
