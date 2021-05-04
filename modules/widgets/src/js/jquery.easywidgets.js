@@ -17,7 +17,7 @@
  * along with Easy Widgets. If not, see <http://www.gnu.org/licenses/>
  *
  */
-(function($) {
+$( document ).ready(function() {
 
     ///////////////////////////
     // Public plugin methods //
@@ -984,9 +984,7 @@
     */
     function PrepareSortablePlaces(sortableItems, settings) {
         var s = settings;
-        if ($(s.selectors.places)) {
-            $(s.selectors.places).sortable('destroy');
-        }
+        $(s.selectors.places).sortable('destroy');
         $(s.selectors.places).sortable({
             items: sortableItems,
             forcePlaceholderSize: true,
