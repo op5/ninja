@@ -16,10 +16,10 @@ if ENV['TEST_ENV_NUMBER']
 end
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :timeout => 120, :phantomjs_options => ['--ignore-ssl-errors=yes', '--ssl-protocol=any', '--load-images=no'])
+  Capybara::Poltergeist::Driver.new(app, :timeout => 120, :js_errors => true, :debug => true, :phantomjs_options => ['--ignore-ssl-errors=yes', '--ssl-protocol=any', '--load-images=no'])
 end
 Capybara.register_driver :poltergeist_debug do |app|
-  Capybara::Poltergeist::Driver.new(app, :timeout => 120, :phantomjs_options => ['--ignore-ssl-errors=yes', '--ssl-protocol=any', '--load-images=yes'], :debug => true, :inspector => true)
+  Capybara::Poltergeist::Driver.new(app, :timeout => 120, :js_errors => true, :debug => true, :phantomjs_options => ['--ignore-ssl-errors=yes', '--ssl-protocol=any', '--load-images=yes'], :debug => true, :inspector => true)
 end
 
 Capybara.default_driver = :poltergeist
